@@ -3,6 +3,7 @@ import os
 import hashlib
 import pymongo
 
+# Declaramos variables.
 execution_path = os.getcwd()
 ruta = "/mnt/10.0.0.13/dos"
 rutaModelosIA = "/mnt/local/datos/ModelosIA"
