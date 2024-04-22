@@ -18,6 +18,7 @@ def obtenerRutaArchvosMongoDb(ruta_archivo):
     documento = coleccion.find_one({"ruta_archivo": ruta_archivo})
     return documento
 
+# Se inserta en la base de datos.
 def insert_mongo(_id, nombre_archivo, ruta_archivo, extensionArchivo, hash_archivo, peso):
     try:
       # Conexión a la base de datos local
@@ -47,9 +48,11 @@ def insert_mongo(_id, nombre_archivo, ruta_archivo, extensionArchivo, hash_archi
        cliente.close()
        return False
 
+# Se genera un hash a partir de una cadena.
 def generarHashId(cadena):
     return hashlib.sha512(cadena.encode()).hexdigest()
 
+# Se genera un hash a partir de un archivo.
 def generarHash(archivo):
     try:
         with open(archivo, 'rb') as f:
@@ -58,6 +61,7 @@ def generarHash(archivo):
     except Exception as e:
         print(f"Error al generar el hash: {e}")
         return None
+
 '''
 detector = ObjectDetection()
 detector.setModelTypeAsYOLOv3()
@@ -80,13 +84,13 @@ for eachObject in detections:
     print(f"x1: {x1} y1: {y1} x2: {x2} y2: {y2}")
 
 '''
-
+# Se convierte de bytes a Gigabytes.
 def convertir_bytes_a_gb(bytes):
     # 1 Gigabyte es igual a 1,073,741,824 bytes
     gigabytes = bytes / 1073741824
     return gigabytes
 
-
+# Se detectan los objetos en una imagen.
 def detectarObjetos(imagen):
     salida = []
     detector = ObjectDetection()
@@ -118,7 +122,7 @@ for objetos in objetosDetectados:
 '''
 
 
-
+# Se procesa un archivo.
 def process_file(file_path):
     try:        
         
@@ -146,6 +150,7 @@ def process_file(file_path):
         print(f"Error: {e}")
         pass
 
+# Se ejecuta el programa.
 if __name__ == "__main__":
     for root, dirs, files in os.walk(ruta):
         for file in files:
