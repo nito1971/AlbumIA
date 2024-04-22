@@ -9,6 +9,8 @@ ruta = "/mnt/10.0.0.13/dos"
 rutaModelosIA = "/mnt/local/datos/ModelosIA"
 extensioneArchivosABuscar = ["jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "mp4", "avi", "mkv", "mov", "wmv", "flv"]
 
+# Se comprueba si la ruta que se le pasa como argumento
+# ya existe en la base de datos.
 def obtenerRutaArchvosMongoDb(ruta_archivo):
     cliente = pymongo.MongoClient("mongodb://localhost:27017")
     db = cliente["inventario"]
