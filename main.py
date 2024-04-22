@@ -5,6 +5,7 @@ import pymongo
 
 execution_path = os.getcwd()
 ruta = "/mnt/10.0.0.13/dos"
+rutaModelosIA = "/mnt/local/datos/ModelosIA"
 extensioneArchivosABuscar = ["jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "mp4", "avi", "mkv", "mov", "wmv", "flv"]
 
 def obtenerRutaArchvosMongoDb(ruta_archivo):
@@ -87,7 +88,7 @@ def detectarObjetos(imagen):
     salida = []
     detector = ObjectDetection()
     detector.setModelTypeAsYOLOv3()
-    detector.setModelPath( os.path.join(execution_path , "yolov3.pt"))
+    detector.setModelPath(os.path.join(rutaModelosIA , "yolov3.pt"))
     detector.loadModel()
     detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , imagen), minimum_percentage_probability=30)
     numeroObjetos = len(detections)
