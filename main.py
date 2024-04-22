@@ -83,7 +83,6 @@ def convertir_bytes_a_gb(bytes):
     gigabytes = bytes / 1073741824
     return gigabytes
 
-
 def detectarObjetos(imagen):
     salida = []
     detector = ObjectDetection()
@@ -118,7 +117,6 @@ for objetos in objetosDetectados:
 
 def process_file(file_path):
     try:        
-        
         if obtenerRutaArchvosMongoDb(file_path) != file_path:            
             file_name = os.path.basename(file_path) 
             extension = file_name.split(".")[-1]       
