@@ -14,12 +14,12 @@ def leeBaseDatos():
     return coleccion.find()
 
 # Funcion para actualizar la base de datos
-def actualizarBaseDatos(id, objetosDetectados):
+def actualizarBaseDatos(id, objetosDetectados, contador):
     try:
         client = pymongo.MongoClient("localhost", 27017)
         db = client["inventario"]
         coleccion = db["archivos"]
-        coleccion.update_one({"_id": id}, {"$set": {"objetos": objetosDetectados}})
+        coleccion.update_one({"_id": id}, {"$set": {f"objeto{contador}": objetosDetectados}})
     except Exception as e:
         print("Error al actualizar la base de datos: " + str(e))
 
@@ -51,8 +51,10 @@ if __name__ == '__main__':
         if documento["extensioArchivo"] == "jpg":            
            objetosDetectados = detectarObjetos(documento["ruta_archivo"])
            if len(objetosDetectados) > 0:
+               contador = 0
                print("Se detectaron objetos en el archivo: " + documento["nombre_archivo"])           
                for objeto in objetosDetectados:
-                   actualizarBaseDatos(documento["_id"], objeto)
+                   contador += 1
+                   actualizarBaseDatos(documento["_id"], objeto, contador)
                    print(objeto)
                    
