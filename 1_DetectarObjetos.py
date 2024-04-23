@@ -53,5 +53,6 @@ if __name__ == '__main__':
            if len(objetosDetectados) > 0:
                print("Se detectaron objetos en el archivo: " + documento["nombre_archivo"])           
                for objeto in objetosDetectados:
+                   actualizarBaseDatos(documento["_id"], objeto)
                    print(objeto)
                    
