@@ -7,7 +7,8 @@ import pymongo
 execution_path = os.getcwd()
 ruta = "/mnt/10.0.0.13/dos"
 rutaModelosIA = "/mnt/local/datos/ModelosIA"
-extensioneArchivosABuscar = ["jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "mp4", "avi", "mkv", "mov", "wmv", "flv", "mp4", "mp3"]
+# extensioneArchivosABuscar = ["jpg", "jpeg", "png", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "txt", "mp4", "avi", "mkv", "mov", "wmv", "flv", "mp4", "mp3"]
+extensioneArchivosABuscar = ["mp4"]
 
 # Se comprueba si la ruta que se le pasa como argumento
 # ya existe en la base de datos.
