@@ -6,6 +6,7 @@ from imageai.Detection import ObjectDetection
 # Ruta donde se encuentran los modelos de IA
 rutaModelosIA = "/mnt/local/datos/Desarrollo/ModelosIA"
 
+# Lista de extensiones permitidas
 extensionesValidas = ["jpg", "jpeg", "png"]
 
 # Funcion para leer la base de datos
@@ -50,13 +51,18 @@ def detectarObjetos(imagen):
 # Funcion principal
 if __name__ == '__main__':
     for documento in leeBaseDatos():
-        if documento["extensioArchivo"] in extensionesValidas:            
-           objetosDetectados = detectarObjetos(documento["ruta_archivo"])
-           if len(objetosDetectados) > 0:
-               contador = 0
-               print("Se detectaron objetos en el archivo: " + documento["nombre_archivo"])           
-               for objeto in objetosDetectados:
-                   contador += 1
-                   actualizarBaseDatos(documento["_id"], objeto, contador)
-                   print(objeto)
+        try:
+            os.system("clear")
+            if documento["extensioArchivo"] in extensionesValidas:            
+                objetosDetectados = detectarObjetos(documento["ruta_archivo"])
+                if len(objetosDetectados) > 0:
+                    contador = 0
+                    print("Se detectaron objetos en el archivo: " + documento["nombre_archivo"])           
+                    for objeto in objetosDetectados:
+                        contador += 1
+                        actualizarBaseDatos(documento["_id"], objeto, contador)
+                        print(objeto)
+        except Exception as e:
+            print("Error al procesar el archivo: " + documento["nombre_archivo"] + " - " + str(e))
+            pass
                    
