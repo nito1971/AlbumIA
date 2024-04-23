@@ -6,6 +6,8 @@ from imageai.Detection import ObjectDetection
 # Ruta donde se encuentran los modelos de IA
 rutaModelosIA = "/mnt/local/datos/Desarrollo/ModelosIA"
 
+extensionesValidas = ["jpg", "jpeg", "png"]
+
 # Funcion para leer la base de datos
 def leeBaseDatos():
     client = pymongo.MongoClient("localhost", 27017)
@@ -48,7 +50,7 @@ def detectarObjetos(imagen):
 # Funcion principal
 if __name__ == '__main__':
     for documento in leeBaseDatos():
-        if documento["extensioArchivo"] == "jpg":            
+        if documento["extensioArchivo"] in extensionesValidas:            
            objetosDetectados = detectarObjetos(documento["ruta_archivo"])
            if len(objetosDetectados) > 0:
                contador = 0
