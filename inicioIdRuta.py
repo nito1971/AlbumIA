@@ -88,7 +88,7 @@ for eachObject in detections:
 # Se convierte de bytes a Gigabytes.
 def convertir_bytes_a_gb(bytes):
     # 1 Gigabyte es igual a 1,073,741,824 bytes
-    gigabytes = bytes / 1073741824
+    gigabytes = bytes / (1024 * 1024 * 1024)
     return gigabytes
 
 # Se detectan los objetos en una imagen.
